@@ -1,0 +1,63 @@
+body {
+ background-color: #f6bfa4;
+}
+
+
+legend{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 70px;
+    
+}
+
+
+.formulario{
+    text-align: center;
+    margin-left: 68%;
+    transform: translateX(-100%);
+    background-image: url("../img/Fondo.png");
+    font-size: 16px;
+    font-family: Elephant;
+    color: rgb(0, 0, 0);
+    box-shadow: #f09641;
+    width: 750px;
+    
+}
+
+
+
+.campo{
+    font-size: 13px;   
+    padding:5px 10px;
+    border-top: none;
+    border-bottom:  dotted;
+    border-left: none;
+    border-right: none;
+    
+}
+
+.btn{
+    background-color: rgb(245, 141, 71);
+    border: double;
+    padding: 15px 32px;
+    color: white;
+    display: inline-block;
+    font-size: 15px;
+    text-decoration: none;
+    width: 150px;
+    font-family: Cooper Black; 
+    margin-left: 25px;
+}
+
+.btn:hover{
+    box-shadow: 0 12px 16px ;
+    background-color: rgb(237, 189, 93);
+    color: rgb(226, 226, 226);
+}
+
+h3{
+    font-weight: bold;
+}
+
+

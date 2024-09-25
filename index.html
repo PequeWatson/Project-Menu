@@ -1,0 +1,104 @@
+<!--
+Tarea Extraclase 3 de Optativa JavaScript
+Autores:
+Melani Sosa
+Armando Joel Curra
+
+Enunciado 11:
+Sistema de Pedidos de Restaurante
+-->    
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gestión de Pedidos</title>
+  <meta name="author" content="Melani Sosa and Armando Joel Curra">
+  <meta name="date" content="24/09/2024">
+  <meta name="copyright" content="Todos los derechos reservados para Melani Sosa y Armando Joel Curra"> 
+  <meta name="keywords" content="Pedidos, Restaurante, Menu, plato"> 
+  <meta name="description" content="Sistema de Pedidos de Restaurante Crea una clase 
+    PedidoBase con propiedades cliente y fecha. Crea una clase Pedido que herede de PedidoBase
+    y añada las propiedades plato y cantidad. Implementa un menú para realizar pedidos, cancelar pedidos y mostrar todos los pedidos.">
+  <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">  
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+  <meta http-equiv="content-style-type" content="text/css">
+  <meta http-equiv="expires" content="0">
+
+  <link href="./css/style.css" rel="stylesheet" />
+
+</head>
+
+
+<body>
+
+
+  
+    
+    <div id="app">
+      <div class="formulario">
+        <legend>Gestión de Pedidos</legend>
+      <form v-on:submit.prevent="realizarPedido">
+        <br><br>
+         <p>Cliente <input type="text" required placeholder="Nombre del cliente.." v-model="cliente" class="campo"> </p>
+         <p>Plato <input type="text" required placeholder="Nombre del plato.." v-model="plato" class="campo"></p>
+         <p> Cantidad <input type="number" placeholder="Cantidad del plato.." min="1" v-model="cantidad" class="campo"></p> <br><br>
+         <button type="submit" class="btn">Realizar Pedido</button>
+        <button v-on:click="cancelarPedido" class="btn">Cancelar Pedido</button> <br><br>
+        </form>
+    
+    
+
+    </div>
+
+    <div class="lista">
+      <h3>Lista de Pedidos:</h3>
+      <ol>
+        <li v-for="pedido in listaDePedidos">Cliente: {{ pedido.cliente }}<br>Fecha: {{ pedido.fecha }}<br>Plato: {{ pedido.plato }}<br>Cantidad: {{ pedido.cantidad }}</li>
+      </ol>
+    </div>
+  </div>
+
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        cliente: null,
+        plato: null,
+        cantidad: null,
+        listaDePedidos: [
+          { cliente: 'Cristiano', fecha: new Date(), plato: 'Siuuu', cantidad: 7 }
+        ]
+      }
+    },
+    methods: {
+      realizarPedido(){
+        let pedido = {
+          cliente: this.cliente,
+          fecha: new Date(),
+          plato: this.plato,
+          cantidad: this.cantidad
+        }
+        this.listaDePedidos.push(pedido)
+        this.cliente = null
+        this.plato = null
+        this.cantidad = null  
+      },
+      cancelarPedido(){
+        let indice = prompt("Introduzca el número del pedido");
+        indice--;
+        if(indice >= 0 && indice < this.listaDePedidos.length)
+            this.listaDePedidos.splice(indice, 1);
+        else
+            alert("Número de pedido incorrecto.");
+      }
+    }
+  })
+ app.mount('#app')
+</script>
+
+</body>
+</html>
